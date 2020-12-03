@@ -1,6 +1,6 @@
 {
-    "name": "function-php7.2",
-    "description": "Template for function in PHP 7.2",
+    "name": "spekulatius/faasd-phpscraper",
+    "description": "PHPScraper function to use with faasd/openfaas",
     "type": "project",
     "config": {
         "classmap-authoritative": true
