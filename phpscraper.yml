@@ -1,0 +1,10 @@
+version: 1.0
+provider:
+  name: openfaas
+  gateway: http://faas1:8080
+functions:
+  phpscraper:
+    lang: php7
+    handler: ./phpscraper
+    image: phpscraper:latest
+
