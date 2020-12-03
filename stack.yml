@@ -6,5 +6,5 @@ functions:
   phpscraper:
     lang: php7
     handler: ./phpscraper
-    image: phpscraper:latest
+    image: spekulatius/faasd-phpscraper:latest
 
