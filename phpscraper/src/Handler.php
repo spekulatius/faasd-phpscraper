@@ -14,6 +14,11 @@ class Handler
      */
     public function handle($data)
     {
-        return $data;
+        $web = new \spekulatius\phpscraper();
+
+        // Navigate to the test page - this one doesn't contain a title-tag.
+        $web->go('https://test-pages.phpscraper.de/meta/lorem-ipsum.html');
+
+        return $web->title;
     }
 }
