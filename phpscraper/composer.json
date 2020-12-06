@@ -1,6 +1,7 @@
 {
     "name": "spekulatius/faasd-phpscraper",
     "description": "PHPScraper function to use with faasd/openfaas",
+    "license": "GPL-3.0-or-later",
     "type": "project",
     "config": {
         "classmap-authoritative": true

@@ -1,10 +1,12 @@
 version: 1.0
 provider:
   name: openfaas
-  gateway: http://faas1:8080
 functions:
   phpscraper:
     lang: php7
+    environment:
+      content_type: application/json
+    secrets:
+      - phpscraper-api-token
     handler: ./phpscraper
     image: spekulatius/faasd-phpscraper:latest
-

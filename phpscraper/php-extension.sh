@@ -1,6 +1,7 @@
 #!/bin/sh
 
 echo "Installing PHP extensions"
+# docker-php-ext-install pdo_mysql
 
 # Install intl
 set -xe \
@@ -20,5 +21,3 @@ set -xe \
     && { find /usr/local/lib -type f -print0 | xargs -0r strip --strip-all -p 2>/dev/null || true; } \
     && apk del .build-deps \
     && rm -rf /tmp/* /usr/local/lib/php/doc/* /var/cache/apk/*
-
-# docker-php-ext-install pdo_mysql
