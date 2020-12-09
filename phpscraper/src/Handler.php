@@ -15,7 +15,7 @@ class Handler
     public function handle($query)
     {
         // Parse the query
-        parse_str($query, $data);
+        $data = json_decode($query, true);
         if ($this->checkAccessKey($data)) {
             return json_encode([
                 'status' => 'error',
