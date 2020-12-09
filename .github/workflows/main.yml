@@ -1,0 +1,50 @@
+name: CI/CD
+
+on:
+  push:
+    branches:
+      - master
+      - multi-arch
+jobs:
+  func-build:
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Checkout
+        uses: actions/checkout@v2
+      -
+        name: Define ENV VARS
+        id: define_env
+        run:  echo "::set-output name=github-sha-short::$(echo $GITHUB_SHA | cut -c 1-7)"
+      -
+        name: Pull template
+        uses: docker://openfaas/faas-cli:latest-root
+        with:
+          args: template store pull node12
+      -
+        name: Run shrinkwrap build
+        uses: docker://openfaas/faas-cli:latest-root
+        with:
+          args: build -f stack.yml --shrinkwrap
+      -
+        name: Login to DockerHub
+        if: success()
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+      -
+        name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+      -
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+      -
+        name: Build and Push the OpenFaaS function
+        uses: docker/build-push-action@v2
+        with:
+          context: ./build/faasd-phpscraper/
+          file: ./build/faasd-phpscraper/Dockerfile
+          push: true
+          platforms: linux/amd64,linux/arm64,linux/arm/v7
+          tags: spekulatius/faasd-phpscraper:latest-${{ steps.define_env.outputs.github-sha-short }}
