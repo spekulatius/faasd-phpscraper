@@ -22,7 +22,7 @@ A simple [OpenFaaS](https://github.com/openfaas/faas)/[faasd](https://github.com
 2. Store it on the server:
 
    ```bash
-   faas-cli secret create phpscraper-api-token --from-file token.txt --gateway http://yourfaasd.somewhere.com:8080
+   faas-cli secret create phpscraper-token --from-file token.txt --gateway http://yourfaasd.somewhere.com:8080
    ```
 
 3. Deploy as usual:

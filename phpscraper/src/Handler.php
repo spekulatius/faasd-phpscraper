@@ -54,7 +54,7 @@ class Handler
     {
         return
             !isset($data['token']) ||
-            file_get_contents('/var/openfaas/secrets/phpscraper-api-token') !== $data['token'];
+            file_get_contents('/var/openfaas/secrets/phpscraper-token') !== $data['token'];
     }
 
     /**
