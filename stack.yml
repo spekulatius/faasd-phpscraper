@@ -7,6 +7,6 @@ functions:
     environment:
       content_type: application/json
     secrets:
-      - phpscraper-api-token
+      - phpscraper-token
     handler: ./phpscraper
     image: spekulatius/faasd-phpscraper:latest
