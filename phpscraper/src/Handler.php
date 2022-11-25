@@ -4,6 +4,7 @@ namespace App;
 
 /**
  * Class Handler
+ *
  * @package App
  */
 class Handler
@@ -31,7 +32,7 @@ class Handler
         }
 
         // Use the scraper to what is needed
-        $web = new \spekulatius\phpscraper();
+        $web = new \Spekulatius\PHPScraper\PHPScraper;
 
         // Access the URL
         try {
