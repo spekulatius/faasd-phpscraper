@@ -2,3 +2,4 @@ template
 build
 vendor/
 token.txt
+composer.lock
